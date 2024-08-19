@@ -33,7 +33,7 @@ RECAPTCHA_SCORE_THRESHOLD = 0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["awsapprunner.com"]
 
 # Application definition
 
@@ -247,6 +247,20 @@ LOGGING = {
         },
     },
 }
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    }
+}
+
+MIDDLEWARE = [
+        "django.middleware.security.SecurityMiddleware",
+        "whitenoise.middleware.WhiteNoiseMiddleware",
+    ]
 
 # Google Analytics
 GA_CODE = ''
